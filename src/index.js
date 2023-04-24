@@ -17,40 +17,78 @@ gallery: document.querySelector(".gallery"),
 //     .catch((error) => console.log(error)); 
 // };
 // refs.getButton.addEventListener("click", getPosts); 
-const createList = (data) => {
-const result = data.reduce((acc, item) => (acc += `<li class="list-group-item">${item.id}</li>`), "");
- 
-refs.body.insertAdjacentHTML("afterbegin", result);
 
-};
-
-
-
-
-
+const KEY = "35668361-6ed5c81517d8d0bc1dc269174";
+const BASE_URL = "https://pixabay.com/api/";
+const URL = `${BASE_URL}?key=${KEY}&q=search&
+image_type=photo&
+orientation=horizontal&
+safesearch=true
+`;
 const getPosts = async() => {
     try {
-        const response = await fetch ('https://pixabay.com/api/?key=35668361-6ed5c81517d8d0bc1dc269174');
+        const response = await fetch (URL);
         const data = await response.json();
-        createList(data);
-        // console.log(data);
+        inertContent(data.hits);
+        // createList(data);
+        console.log(data);
         // return data;     
     } catch (error) {
         console.log(error);
     }
 };
-const posts = getPosts();
+ getPosts();
+
+
+const creatGalleryItem = (item) => `
+<div class="photo-card">
+  <img src="${item.userImageURL}" alt="" loading="lazy" />
+  <div class="info">
+    <p class="info-item">
+      <b>Likes</b> ${item.likes}
+    </p>
+    <p class="info-item">
+      <b>Views</b> ${item.views}
+    </p>
+    <p class="info-item">
+      <b>Comments</b> ${item.comments}
+    </p>
+    <p class="info-item">
+      <b>Downloads</b> ${item.downloads}
+    </p>
+  </div>
+</div>`;
+
+
+const generateContent = (array) => array.reduce((acc, item) => 
+acc + creatGalleryItem(item), "");
+
+const inertContent = (array) => {
+    const result = generateContent(array);
+    refs.gallery.insertAdjacentHTML("beforeend", result);
+};
+
+
+
+// const createList = (data) => {
+// const result = data.reduce((acc, item) => (acc += `<li class="list-group-item">${item.i}</li>`), "");
+ 
+// refs.body.insertAdjacentHTML("afterbegin", result);
+// };
+
+
+
 
 // const creatPost = (e) => {
 //     // відминемо перезавантаження сторінки
 //     e.preventDefault();
-//     // відправемо данні на бекенд
-// const text = refs.text.volue;
-// //   робимо запит
-// fetch ('https://pixabay.com/api/?key=35668361-6ed5c81517d8d0bc1dc269174&q=yellow+flowers&image_type=photo')
-//     .then((response) => response.json())
-//     .then((data) => console.log(data))
-//     .catch((error) => console.log(error)); 
+// // //     // відправемо данні на бекенд
+// // // const text = refs.text.volue;
+// // // //   робимо запит
+// // // fetch ('https://pixabay.com/api/?key=35668361-6ed5c81517d8d0bc1dc269174&q=yellow+flowers&image_type=photo')
+// // //     .then((response) => response.json())
+// // //     .then((data) => console.log(data))
+// // //     .catch((error) => console.log(error)); 
 // };
 // refs.submit.addEventListener("click", creatPost);
 
