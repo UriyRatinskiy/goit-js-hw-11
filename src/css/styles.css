@@ -3,3 +3,21 @@
     background-color: aquamarine;
     height: 50px;
 }
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+
+}
+
+.photo-card{
+    background-color: rgb(131, 218, 174);
+    border: 10px;
+    border-color: black;
+}
+
+
+.info-item{
+    display: flex;
+}

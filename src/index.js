@@ -20,11 +20,13 @@ gallery: document.querySelector(".gallery"),
 
 const KEY = "35668361-6ed5c81517d8d0bc1dc269174";
 const BASE_URL = "https://pixabay.com/api/";
-const URL = `${BASE_URL}?key=${KEY}&q=search&
+const URL = `${BASE_URL}?key=${KEY}&q=yellow+flowers&
 image_type=photo&
 orientation=horizontal&
-safesearch=true
+safesearch=true&
+
 `;
+
 const getPosts = async() => {
     try {
         const response = await fetch (URL);
@@ -37,12 +39,14 @@ const getPosts = async() => {
         console.log(error);
     }
 };
- getPosts();
 
+// refs.text.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
+//  getPosts();
+// refs.getButton.addEventListener("click", getPosts); 
 
 const creatGalleryItem = (item) => `
 <div class="photo-card">
-  <img src="${item.userImageURL}" alt="" loading="lazy" />
+  <img src="${item.userImageURL}" alt="${item.tags}" loading="lazy" />
   <div class="info">
     <p class="info-item">
       <b>Likes</b> ${item.likes}
@@ -59,15 +63,23 @@ const creatGalleryItem = (item) => `
   </div>
 </div>`;
 
-
 const generateContent = (array) => array.reduce((acc, item) => 
 acc + creatGalleryItem(item), "");
+
 
 const inertContent = (array) => {
     const result = generateContent(array);
     refs.gallery.insertAdjacentHTML("beforeend", result);
 };
 
+refs.form.addEventListener("submit", (event) => {
+ event.preventDefault(getPosts());
+//  console.log(event);
+ const {
+  element: {}
+ } = event.currentTarget;
+ 
+});
 
 
 // const createList = (data) => {
@@ -82,13 +94,13 @@ const inertContent = (array) => {
 // const creatPost = (e) => {
 //     // відминемо перезавантаження сторінки
 //     e.preventDefault();
-// // //     // відправемо данні на бекенд
-// // // const text = refs.text.volue;
-// // // //   робимо запит
-// // // fetch ('https://pixabay.com/api/?key=35668361-6ed5c81517d8d0bc1dc269174&q=yellow+flowers&image_type=photo')
-// // //     .then((response) => response.json())
-// // //     .then((data) => console.log(data))
-// // //     .catch((error) => console.log(error)); 
+//     // відправемо данні на бекенд
+// const text = refs.text.volue;
+// //   робимо запит
+// fetch (URL)
+//     .then((response) => response.json())
+//     .then((data) => console.log(data))
+//     .catch((error) => console.log(error)); 
 // };
 // refs.submit.addEventListener("click", creatPost);
 
