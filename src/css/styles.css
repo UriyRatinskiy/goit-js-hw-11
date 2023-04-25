@@ -21,3 +21,14 @@
 .info-item{
     display: flex;
 }
+
+/* // refs.form.addEventListener("submit", (event) => {
+    //   // відминемо перезавантаження сторінки
+    //  event.preventDefault(getPosts());
+    //  const text = refs.enterText.value;
+    //  console.log(text);
+    //  const {
+    //   element: {}
+    //  } = event.currentTarget;
+     
+    // }); */
