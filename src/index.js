@@ -89,3 +89,4 @@ function clearGallery () {
 //         console.log(error);
 //     }
 // };
+// .

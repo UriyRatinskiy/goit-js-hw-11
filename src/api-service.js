@@ -41,3 +41,5 @@ set searchQuery(newQuery) {
     this.query = newQuery;
 };
 };
+
+
