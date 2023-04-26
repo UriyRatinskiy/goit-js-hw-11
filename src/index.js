@@ -1,5 +1,8 @@
+
+import NewsApiService from './api-service';
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import NewsApiService from './api-service';
 
 // збераємо всі рефи у обєкт та створюємо доступ до форми, інпиту та кнопки 
 const refs = {
@@ -9,28 +12,10 @@ enterText: document.querySelector(".enter-text"),
 submit: document.querySelector(".submit"), 
 body: document.querySelector("body"),
 gallery: document.querySelector(".gallery"),
+loadMoreBtn: document.querySelector(".load-more"),
 };
 
-
-
-// const KEY = "35668361-6ed5c81517d8d0bc1dc269174";
-// const BASE_URL = "https://pixabay.com/api/";
-// const URL = `${BASE_URL}?key=${KEY}&q=${query}&
-// image_type=photo&orientation=horizontal&
-// safesearch=true&per_page=40`;
-// const getPosts = async() => {
-//   const query = e.currentTarget.elements.searchQuery.value
-//     try {
-//         const response = await fetch (URL);
-//         const data = await response.json();
-//         inertContent(data.hits);
-//         createList(data);
-//         console.log(data);
-//         // return data;     
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
+const newsApiService = new NewsApiService();
 
 
 const generateContent = (array) => array?.reduce((acc, item) => 
@@ -61,23 +46,46 @@ const creatGalleryItem = (item) => `
 </div>`;
 
 refs.form.addEventListener('submit' , onSearch);
+refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
-function onSearch(e){
+function onSearch(e) {
 e.preventDefault();
-const query = e.currentTarget.elements.searchQuery.value
 
-const KEY = "35668361-6ed5c81517d8d0bc1dc269174";
-const BASE_URL = "https://pixabay.com/api/";
-const URL = `${BASE_URL}?key=${KEY}&q=${query}&
-image_type=photo&orientation=horizontal&
-safesearch=true&per_page=40`;
+clearGallery ();
+newsApiService.searchQuery = e.currentTarget.elements.searchQuery.value;
+newsApiService.resetPage();
+newsApiService.fetchPhotoCard().then(appendGalleryMarkup);
 
-
-fetch(URL)
-.then(r => r.json())
-.then(console.log);
-
+};
+function onLoadMore() {
+  newsApiService.fetchPhotoCard().then(appendGalleryMarkup);
 };
 
 
+function appendGalleryMarkup(hits) {
+  refs.gallery.insertAdjacentHTML('beforeend' , inertContent(hits));
 
+}
+
+function clearGallery () {
+  refs.gallery.innerHTML = '';
+}
+
+// const KEY = "35668361-6ed5c81517d8d0bc1dc269174";
+// const BASE_URL = "https://pixabay.com/api/";
+// const URL = `${BASE_URL}?key=${KEY}&q=${query}&
+// image_type=photo&orientation=horizontal&
+// safesearch=true&per_page=40`;
+// const getPosts = async() => {
+//   const query = e.currentTarget.elements.searchQuery.value
+//     try {
+//         const response = await fetch (URL);
+//         const data = await response.json();
+//         inertContent(data.hits);
+//         createList(data);
+//         console.log(data);
+//         // return data;     
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
