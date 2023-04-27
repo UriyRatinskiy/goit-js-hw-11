@@ -79,6 +79,21 @@ input {
 .info-item-text {
     display: flex;
 }
+
+.spinner {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #FFF;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        }
+
+ .btn-load-more.is-hidden {
+     display: none;
+     }
 /* // refs.form.addEventListener("submit", (event) => {
     //   // відминемо перезавантаження сторінки
     //  event.preventDefault(getPosts());
