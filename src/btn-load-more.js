@@ -1,4 +1,4 @@
-export class btnLoadMore {
+export default class BtnLoadMore {
     constructor({ selector, hidden = false }) {
         this.refs = this.getRefs(selector);
 
