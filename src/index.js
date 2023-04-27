@@ -6,13 +6,13 @@ import NewsApiService from './api-service';
 
 // збераємо всі рефи у обєкт та створюємо доступ до форми, інпиту та кнопки 
 const refs = {
-// getButton: document.querySelector(".get"),
+
 form: document.querySelector(".search-form"),
 enterText: document.querySelector(".enter-text"),
-submit: document.querySelector(".submit"), 
+submit: document.querySelector(".btn-submit"), 
 body: document.querySelector("body"),
 gallery: document.querySelector(".gallery"),
-loadMoreBtn: document.querySelector(".load-more"),
+loadMoreBtn: document.querySelector(".btn-load-more"),
 };
 
 const newsApiService = new NewsApiService();
@@ -28,19 +28,19 @@ const inertContent = (array) => {
 
 const creatGalleryItem = (item) => `
 <div class="photo-card">
-<img src="${item.webformatURL}" alt="${item.tags ?? ""}" loading="lazy"/>
+<img class="gallery__image" src="${item.webformatURL ?? ""}" alt="${item.tags ?? ""}" loading="lazy"  width="320px" height="210px" />
   <div class="info">
     <p class="info-item">
-      <b>Likes</b> ${item.likes ?? ""}
+      <b class="info-item-text">Likes</b> ${item.likes ?? ""}
     </p>
     <p class="info-item">
-      <b>Views</b> ${item.views ?? ""}
+      <b class="info-item-text">Views</b> ${item.views ?? ""}
     </p>
     <p class="info-item">
-      <b>Comments</b> ${item.comments ?? ""}
+      <b class="info-item-text">Comments</b> ${item.comments ?? ""}
     </p>
     <p class="info-item">
-      <b>Downloads</b> ${item.downloads ?? ""}
+      <b class="info-item-text">Downloads</b> ${item.downloads ?? ""}
     </p>
   </div>
 </div>`;
@@ -71,22 +71,3 @@ function clearGallery () {
   refs.gallery.innerHTML = '';
 }
 
-// const KEY = "35668361-6ed5c81517d8d0bc1dc269174";
-// const BASE_URL = "https://pixabay.com/api/";
-// const URL = `${BASE_URL}?key=${KEY}&q=${query}&
-// image_type=photo&orientation=horizontal&
-// safesearch=true&per_page=40`;
-// const getPosts = async() => {
-//   const query = e.currentTarget.elements.searchQuery.value
-//     try {
-//         const response = await fetch (URL);
-//         const data = await response.json();
-//         inertContent(data.hits);
-//         createList(data);
-//         console.log(data);
-//         // return data;     
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-// .

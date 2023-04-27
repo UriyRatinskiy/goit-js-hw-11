@@ -1,27 +1,83 @@
+
 .search-form {
-    text-align:center;
-    background-color: aquamarine;
-    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: rgb(59, 61, 99);
+
 }
+
+input {
+   height: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+
+}
+.btn-submit,
+.btn-load-more
+ {
+    cursor: pointer;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(213, 205, 247);
+
+}
+.btn-load-more
+ {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+ }
+
+ .btn-load-more.is-hidden {
+    display: none;
+}
+
 .gallery{
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
 
 }
 
 .photo-card{
-    background-color: rgb(131, 218, 174);
-    border: 10px;
-    border-color: black;
+    border: 2px solid rgb(32, 24, 105);
+    border-radius: 10px;
+    
+    transition: scale, 250ms;
+    
 }
 
+.photo-card:hover,
+.photo-card:focus {
+    scale: 1.02;
+    cursor: pointer;
+    box-shadow: -5px 5px rgba(0, 0, 0, 0.2);
+}
 
-.info-item{
+.gallery__image{
+    border-radius: 5px 5px 0 0;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-item-text {
     display: flex;
 }
-
 /* // refs.form.addEventListener("submit", (event) => {
     //   // відминемо перезавантаження сторінки
     //  event.preventDefault(getPosts());
