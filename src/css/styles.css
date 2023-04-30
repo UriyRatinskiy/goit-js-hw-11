@@ -58,6 +58,7 @@ input {
 
 .photo-card:hover,
 .photo-card:focus {
+    overflow: hidden;
     scale: 1.02;
     cursor: pointer;
     box-shadow: -5px 5px rgba(0, 0, 0, 0.2);
