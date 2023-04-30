@@ -16,8 +16,8 @@ input {
     border-radius: 5px;
 
 }
-.btn-submit,
-.btn-load-more
+
+.load-more
  {
     cursor: pointer;
     height: 30px;
@@ -25,7 +25,7 @@ input {
     background-color: rgb(213, 205, 247);
 
 }
-.btn-load-more
+.load-more
  {
     display: block;
     margin-left: auto;
@@ -33,7 +33,7 @@ input {
     margin-bottom: 24px;
  }
 
- .btn-load-more.is-hidden {
+ .load-more.is-hidden {
     display: none;
 }
 
@@ -63,9 +63,14 @@ input {
     box-shadow: -5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.gallery__image{
+.gallery__item{
     border-radius: 5px 5px 0 0;
 }
+
+.image {
+
+    overflow: hidden;
+  }
 
 .info {
     display: flex;
@@ -81,26 +86,26 @@ input {
 }
 
 .spinner {
-        width: 15px;
-        height: 15px;
-        border: 1px solid #FFF;
-        border-bottom-color: transparent;
-        border-radius: 50%;
-        display: inline-block;
-        box-sizing: border-box;
-        animation: rotation 1s linear infinite;
-        }
+    width: 15px;
+    height: 15px;
+    border: 2px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
 
- .btn-load-more.is-hidden {
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+        
+
+.is-hidden {
      display: none;
      }
-/* // refs.form.addEventListener("submit", (event) => {
-    //   // відминемо перезавантаження сторінки
-    //  event.preventDefault(getPosts());
-    //  const text = refs.enterText.value;
-    //  console.log(text);
-    //  const {
-    //   element: {}
-    //  } = event.currentTarget;
-     
-    // }); */

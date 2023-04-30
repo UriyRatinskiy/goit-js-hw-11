@@ -1,4 +1,5 @@
-export default class BtnLoadMore {
+
+export  class LoadMoreBtn {
     constructor({ selector, hidden = false }) {
         this.refs = this.getRefs(selector);
 
@@ -6,9 +7,12 @@ export default class BtnLoadMore {
             this.hide();
         };
     }
+    
 
     getRefs(selector) {
         const refs = {};
+
+        
         refs.button = document.querySelector(selector);
         refs.spinner = refs.button.querySelector('.spinner');
         refs.label = refs.button.querySelector('.label');
