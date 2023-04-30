@@ -51,7 +51,7 @@ input {
 .photo-card{
     border: 2px solid rgb(32, 24, 105);
     border-radius: 10px;
-    
+    overflow: hidden;
     transition: scale, 250ms;
     
 }
@@ -66,11 +66,6 @@ input {
 .gallery__item{
     border-radius: 5px 5px 0 0;
 }
-
-.image {
-
-    overflow: hidden;
-  }
 
 .info {
     display: flex;
