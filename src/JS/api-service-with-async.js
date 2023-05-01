@@ -15,6 +15,7 @@ async fetchImages() {
     const URL = `${BASE_URL}?key=${KEY}&q=${this.searchQuery}&
     image_type=photo&orientation=horizontal&
     safesearch=true&per_page=${this.perPage}&page=${this.page}`;
+    try {
     const response = await axios.get(URL);
       
     const { totalHits, hits } = response.data;
@@ -22,8 +23,10 @@ async fetchImages() {
 
     return  { totalHits, hits };
 
+} catch (error) {
+    Notify.failure("A request error occurred!");
 }
-
+}
         resetPage() {
         this.page = 1;
     }
