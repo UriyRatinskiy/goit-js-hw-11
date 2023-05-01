@@ -1,8 +1,8 @@
 
-import ImagesApiService from './api-service-with-async';
 import './css/styles.css';
+import ImagesApiService from './JS/api-service-with-async';
+import getRefs from './JS/get-refs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import getRefs from './get-refs';
 import SimpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
 
@@ -19,9 +19,15 @@ const imagesApiService = new ImagesApiService();
 function searchImages(event) {
   event.preventDefault();
   clearGallery();
-  refs.loadMoreBtn.classList.remove('is-hidden');
-
+  
   imagesApiService.query = event.currentTarget.elements.searchQuery.value;
+
+  if (!imagesApiService.query || refs.searchInput.value === ' ') {
+   
+    Notify.warning("Plase enter a value to search for!")
+    return;
+}
+ refs.loadMoreBtn.classList.remove('is-hidden');
   imagesApiService.resetPage();
   imagesApiService.fetchImages()
       .then(({ totalHits, hits }) => {

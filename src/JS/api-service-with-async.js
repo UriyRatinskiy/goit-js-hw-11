@@ -1,8 +1,5 @@
-import getRefs from './get-refs';
-const axios = require('axios').default;
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const refs = getRefs();
+import axios from "axios";
 
 const KEY = "35668361-6ed5c81517d8d0bc1dc269174";
 const BASE_URL = "https://pixabay.com/api/";
