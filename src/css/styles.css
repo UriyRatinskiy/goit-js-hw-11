@@ -1,4 +1,6 @@
-
+body {
+    background-color:rgb(168, 185, 240);
+}
 .search-form {
     display: flex;
     justify-content: center;
@@ -67,7 +69,7 @@ input {
     overflow: hidden;
     scale: 1.02;
     cursor: pointer;
-    box-shadow: -5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: -5px 5px  rgba(0, 0, 0, 0.2);
 }
 
 .gallery__item{
@@ -77,6 +79,7 @@ input {
 .info {
     display: flex;
     justify-content: space-around;
+    background-color: rgb(213, 205, 247);
 }
 
 .info-item {
