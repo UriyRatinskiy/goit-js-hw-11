@@ -22,11 +22,12 @@ async function searchImages(event) {
   
   const searchQuery = imagesApiService.query = event.currentTarget.elements.searchQuery.value;
 
-  if (!imagesApiService.query || refs.searchInput.value === ' ') {
+  if (!imagesApiService.query || !refs.searchInput.value.trim().length > 0) {
    
     Notify.warning("Plase enter a value to search for!")
+
     return;
-}
+}  
  refs.loadMoreBtn.classList.remove('is-hidden');
   imagesApiService.resetPage();
   try {

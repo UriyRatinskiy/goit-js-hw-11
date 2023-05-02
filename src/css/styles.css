@@ -16,6 +16,12 @@ input {
     border-radius: 5px;
 
 }
+.btn {
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgb(213, 205, 247);
+    cursor: pointer;
+}
 
 .load-more
  {
