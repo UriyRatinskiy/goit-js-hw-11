@@ -20,9 +20,9 @@ async function searchImages(event) {
   event.preventDefault();
   clearGallery();
   
-  const searchQuery = imagesApiService.query = event.currentTarget.elements.searchQuery.value;
+  const searchQuery = imagesApiService.query = event.currentTarget.elements.searchQuery.value.trim();
 
-  if (!imagesApiService.query || !refs.searchInput.value.trim().length > 0) {
+  if (!searchQuery){
    
     Notify.warning("Plase enter a value to search for!")
 
